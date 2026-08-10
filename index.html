@@ -1,38 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My FRC Dashboard</title>
-    <meta charset="utf-8">
-    <script type="module" src="https://unpkg.com/@frc-web-components/fwc@latest/dist/fwc.js"></script>
-    <style>
-        body { background-color: #222; color: white; font-family: sans-serif; padding: 20px; }
-        h1 { text-align: center; }
-        .dashboard-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    </style>
-</head>
-<body>
-
-    <h1>🚀 Team FRC Driver Station</h1>
-
-    <div class="dashboard-container">
-        <frc-nt4-connection-provider></frc-nt4-connection-provider>
-        
-        <div>
-            <h3>Gyro Heading</h3>
-            <frc-gyro value-topic="/SmartDashboard/Heading"></frc-gyro>
-        </div>
-
-        <div>
-            <h3>Battery</h3>
-            <frc-voltage-view value-topic="/SmartDashboard/BatteryVoltage"></frc-voltage-view>
-        </div>
-        
-        <div>
-            <h3>Target Locked</h3>
-            <frc-boolean-box value-topic="/SmartDashboard/IsTargetLocked" true-color="lime" false-color="red"></frc-boolean-box>
-        </div>
-
-    </div>
-
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>frc-dashboard</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
