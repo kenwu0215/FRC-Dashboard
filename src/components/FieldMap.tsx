@@ -6,18 +6,18 @@ const FIELD_WIDTH = 17.55;
 const FIELD_HEIGHT = 8.05;
 
 export function FieldMap() {
-  // const x = useNTValue(Topics.swerve.pose.x, 0);
-  // const y = useNTValue(Topics.swerve.pose.y, 0);
-  // const rotation = useNTValue(Topics.swerve.pose.rotation, 0);
+  const x = useNTValue(Topics.swerve.pose.x, 0);
+  const y = useNTValue(Topics.swerve.pose.y, 0);
+  const rotation = useNTValue(Topics.swerve.pose.rotation, 0);
 
-  const x = 8.296;
-  const y = 3.990;
-  const rotation = 126;
+  // const x = 4.673;
+  // const y = 4.003;
+  // const rotation = -5.341;
 
   const mapWidth = 600;
   const mapHeight = 276;
 
-  const px_offset = 0.04;
+  const px_offset = 0.025;
 
   const px = (1 - (x / FIELD_WIDTH) - px_offset) * mapWidth;
   const py = (y / FIELD_HEIGHT) * mapHeight;

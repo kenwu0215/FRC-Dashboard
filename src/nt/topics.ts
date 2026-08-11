@@ -87,5 +87,23 @@ export const Topics = {
       NetworkTablesTypeInfos.kDouble
     )
     
-  }
+  },
+
+  auto: {
+
+    options: nt.createTopic<string[]>(
+      "/SmartDashboard/Auto Chooser/options",
+      NetworkTablesTypeInfos.kStringArray
+    ),
+
+    selected: nt.createTopic<string>(
+      "/SmartDashboard/Auto Chooser/selected",
+      NetworkTablesTypeInfos.kString
+    ),
+
+    active: nt.createTopic<string>(
+      "/SmartDashboard/Auto Chooser/active",
+      NetworkTablesTypeInfos.kString
+    )
+  },
 };

@@ -1,3 +1,4 @@
+import AutoChooser from "../components/AutoChooser";
 import { FieldMap } from "../components/FieldMap";
 import IntakerUI from "../components/IntakerUI";
 import ShooterUI from "../components/ShooterUI";
@@ -17,9 +18,7 @@ export default function DashBoard() {
                 <h1 className="h-full text-4xl font-extrabold" > 8584 Dashboard </h1>
                 
             </div>
-            <section className="p-8 grid grid-cols-5 gap-9">
-
-
+            <section className="p-8 grid grid-cols-5 gap-10">
 
                 <ShooterUI/>
 
@@ -31,6 +30,8 @@ export default function DashBoard() {
                 <StatusLight active={true} label="enabled"/>
 
                 <FieldMap/>
+
+                <AutoChooser/>
 
 
                 <p>
