@@ -10,6 +10,13 @@ export default function TransferUI() {
 
     const status = (temp >= 65.0) ? "overheat" : "ok";
 
+    const color =
+        temp > 80
+        ? "bg-red-500"
+        : temp >60
+        ? "bg-yellow-400"
+        : "bg-green-500";
+
     return(
         <div className="w-full h-72 bg-blue-900 border-blue-400 border-8 rounded-2xl overflow-hidden">
             <div>
@@ -35,16 +42,25 @@ export default function TransferUI() {
                         (typeof(current) == "number") ? current.toFixed(2):0.0
                     }
                 </p>
+                
+                <div>
+                    <p className={` relative left-2 text-xl font-bold italic 
+                        ${status == "ok" && "text-white"}
+                        ${status == "overheat" && "text-red-600"}
+                        `}>
+                        Temp: {
+                            
+                            (temp >=65.0) ?temp.toFixed(2.0) +"😡" : temp.toFixed(2)
+                        }
+                    </p>
 
-                <p className={` text-xl font-bold italic 
-                    ${status == "ok" && "text-white"}
-                    ${status == "overheat" && "text-red-600"}
-                    `}>
-                    Temp: {
- 
-                        (temp >=65.0) ?temp.toFixed(2.0) +"😡" : temp.toFixed(2)
-                    }
-                </p>
+                    <div className="w-35 h-5 bg-zinc-800 rounded-full overflow-hidden border border-zinc-600">
+                        <div
+                            className={`h-full ${color} transition-all duration-200`}
+                            style={{ width: `${temp}%` }}
+                        />
+                    </div>
+                </div>
 
             </div>
         </div>
