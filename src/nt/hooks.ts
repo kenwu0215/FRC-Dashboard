@@ -1,32 +1,26 @@
 import { useEffect, useState } from "react";
 
+type NTTopic<T> = {
+  subscribe: (callback: (value: T) => void) => number;
+  unsubscribe: (subuid: number) => void;
+  getValue: () => T;
+};
+
 export function useNTValue<T>(
-    topic: {
-        subscribe: (
-            callback: (value: T) => void
-        ) => number;
+  topic: NTTopic<T>,
+  initialValue: NonNullable<T>
+): NonNullable<T> {
+  const [value, setValue] = useState<NonNullable<T>>(
+    (topic.getValue() ?? initialValue) as NonNullable<T>
+  );
 
-        unsubscribe: (
-            subuid: number
-        ) => void;
+  useEffect(() => {
+    const id = topic.subscribe((newValue) => {
+      setValue((newValue ?? initialValue) as NonNullable<T>);
+    });
 
-        getValue: () => T | null;
-    },
-    initialValue: T,
-): T {
-    const [value, setValue] = useState<T>(
-        topic.getValue() ?? initialValue
-    );
+    return () => topic.unsubscribe(id);
+  }, [topic, initialValue]);
 
-    useEffect(() => {
-        const subscriptionId = topic.subscribe((newValue) => {
-            setValue(newValue);
-        });
-
-        return () => {
-            topic.unsubscribe(subscriptionId);
-        };
-    }, [topic]);
-
-    return value;
+  return value;
 }
